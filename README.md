@@ -4,4 +4,4 @@ This repository holds music analysis code snippets for [Music21](http://web.mit.
 
 Please commit your code snippets to the appropriate directories. If your code snippet involves a solution with multiple files, or a particular solution for a project, commit it to a directory within the appropriate code snippets directory. 
 
-For all ```Python``` code snippets the [```Jupyter Notebook```](http://jupyter.org) format is preferred.
+For all ```Python``` code snippets the [```Jupyter Notebook```](http://jupyter.org) format (```.ipynb``` extension) is preferred.
