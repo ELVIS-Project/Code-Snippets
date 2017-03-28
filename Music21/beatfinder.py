@@ -1,11 +1,13 @@
-'''function that reads in results of ngram indexer ("ng") and iterates
+'''For finding beat values in midi files where there are no barlines (and
+thus music21's beat method returns nothing.)
+function reads in results of ngram indexer ("ng") and iterates
 through the total number of ng columns ('num') one line at a time, checking
 for where any index value matches an index value in the time signature
 dictionary (timedict, collected from parsed music21 score object passed as
 3rd variable "m21score") and whether that time
 signature is duple or triple.It uses the index value and the meter to calculate
 the beat position. It assumes all parts have the same time sig changes.
-Returns a list of beat values (one per index).'''
+Returns a pandas series containing beat values (one per index).'''
 
 def beatfinder(num, ng, m21score):
 
