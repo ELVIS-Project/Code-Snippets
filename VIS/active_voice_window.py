@@ -1,10 +1,13 @@
-'''function that reads in series of "active voices result" (y) and manipulates
-numerosity to be more stable over time by manipulating window size (win).
-Sets the minimum number of voices in the texture to "min".'''
+import pandas as pd
+import music21
+import vis
+from vis.models.indexed_piece import Importer
 
 def voicefilter(y, win, min):
-
-    import pandas as pd
+    
+    """function that reads in series of 'active voices result' (y) and manipulates
+    numerosity to be more stable over time by manipulating window size (win).
+    Sets the minimum number of voices in the texture to 'min'."""
 
     av_col = y.copy()
     x = av_col['active_voices.ActiveVoicesIndexer', 'Active Voices']
