@@ -1,26 +1,26 @@
-'''For finding beat values in midi files where there are no barlines (and
-thus music21's beat method returns nothing.)
-function reads in results of ngram indexer ("ng") and iterates
-through the total number of ng columns ('num') one line at a time, checking
-for where any index value matches an index value in the time signature
-dictionary (timedict, collected from parsed music21 score object passed as
-3rd variable "m21score") and whether that time
-signature is duple or triple.It uses the index value and the meter to calculate
-the beat position. It assumes all parts have the same time sig changes.
-Returns a pandas series containing beat values (one per index).'''
-
+import pandas as pd
+import music21
+import vis
+from vis.models.indexed_piece import Importer
+    
 def beatfinder(num, ng, m21score):
-
-    import pandas as pd
+    
+    """For finding beat values in midi files where there are no barlines (and
+    thus music21's beat method returns nothing.)
+    function reads in results of ngram indexer ('ng') and iterates
+    through the total number of ng columns ('num') one line at a time, checking
+    for where any index value matches an index value in the time signature
+    dictionary (timedict, collected from parsed music21 score object passed as
+    3rd variable 'm21score') and whether that time
+    signature is duple or triple.It uses the index value and the meter to calculate
+    the beat position. It assumes all parts have the same time sig changes.
+    Returns a pandas series containing beat values (one per index)."""
 
     indexvals = []
     beats = []
-    keys = []
-    values = []
 
-    for i in m21score.parts[0].getTimeSignatures():
-        keys.append(i.offset)
-        values.append(i.numerator)
+    keys = [i.offset for i in m21score.parts[0].getTimeSignatures()]
+    values = [i.numerator for i in m21score.parts[0].getTimeSignatures()]
 
     timedict = dict(zip(keys, values))
     triple = [3, 6, 9, 12]
